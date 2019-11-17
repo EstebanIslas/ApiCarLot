@@ -11,7 +11,7 @@ pool.getConnection((err, connection)=>{
 
     if (connection) {
         connection.release();
-        console.log('DB has been conected succesfully');
+        console.log('DataBase has been conected succesfully');
         return;
     }
 }); 

@@ -13,11 +13,11 @@ router.get('/getAllUsers', (req, res)=>{
     });
 });
 
-router.get('/getUserById/:id/:rol',(req, res)=>{
-    const {id} = req.params, {rol} = req.params; //Obtener del navegador
-    console.log(id, rol);
+router.get('/getUserById/:id',(req, res)=>{
+    const {id} = req.params //Obtener del navegador
+    console.log(id);
 
-    pool.query('SELECT * FROM users WHERE id = ? AND rol = ?', [id,rol], (err, rows, fields)=>{
+    pool.query('SELECT * FROM users WHERE id = ?', [id], (err, rows, fields)=>{
         if (!err) {
             res.json(rows[0]);
         } else {

@@ -13,14 +13,15 @@ router.get('/getAllUsers', (req, res)=>{
     });
 });
 
-router.get('/getUserById/:id',(req, res)=>{
-    const {id} = req.params //Obtener del navegador
-    console.log(id);
+router.post('/login/',(req, res)=>{
+    const {correo, password} = req.body;
+    //console.log(id);
 
-    pool.query('SELECT * FROM users WHERE id = ?', [id], (err, rows, fields)=>{
+    pool.query('SELECT * FROM users WHERE correo = ? AND password = ?', [correo, password], (err, rows, fields)=>{
         if (!err) {
             res.json(rows[0]);
         } else {
+            res.json({Status: 'Error!'});
             console.log('Problems with the Server: ', err); 
         }
     });
@@ -34,6 +35,7 @@ router.post('/registroUsuario', (req, res)=>{
         if (!err) {
             res.json({Status: 'Usuario Registrado'})
         } else {
+            res.json({Status: 'Error!'});
             console.log('Error al Registrar el usuario', err);
         }
     });

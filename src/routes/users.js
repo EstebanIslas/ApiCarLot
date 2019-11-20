@@ -26,6 +26,19 @@ router.get('/getUserById/:id',(req, res)=>{
     });
 });
 
+router.post('/registroUsuario', (req, res)=>{
+    const{id, nombre, apellido, telefono, correo, password} = req.body;
+    const query = `Call registroUsuarios(?,?,?,?,?,?);`;
+
+    pool.query(query, [id, nombre, apellido, telefono, correo, password], (err, rows, fields)=>{
+        if (!err) {
+            res.json({Status: 'Usuario Registrado'})
+        } else {
+            console.log('Error al Registrar el usuario', err);
+        }
+    });
+});
+
 router.post('/addUser',(req, res)=>{
     const {id, correo, password, image, rol, id_person} = req.body; //Variable que recibe datos de la url
     const query = `Call usersAddorEdit(?,?,?,?,?,?);`; //Llama al procedure de Mysql

@@ -27,10 +27,10 @@ router.get('/getUserById/:id',(req, res)=>{
 });
 
 router.post('/registroUsuario', (req, res)=>{
-    const{id, nombre, apellido, telefono, correo, password} = req.body;
-    const query = `Call registroUsuarios(?,?,?,?,?,?);`;
+    const{id, nombre, apellido, telefono, correo, password, rol} = req.body;
+    const query = `Call registroUsuarios(?,?,?,?,?,?,?);`;
 
-    pool.query(query, [id, nombre, apellido, telefono, correo, password], (err, rows, fields)=>{
+    pool.query(query, [id, nombre, apellido, telefono, correo, password, rol], (err, rows, fields)=>{
         if (!err) {
             res.json({Status: 'Usuario Registrado'})
         } else {

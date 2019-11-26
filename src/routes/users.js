@@ -13,6 +13,7 @@ router.get('/getAllUsers', (req, res)=>{
     });
 });
 
+//iniciar sesión por ambos roles de usuario
 router.post('/login/',(req, res)=>{
     const {correo, password} = req.body;
     //console.log(id);

@@ -16,13 +16,13 @@ router.get('/getParks', (req, res)=>{
 router.post('/registroParks', (req, res)=>{
     const{id, nombre, apellido, telefono, correo, password, rol, nombre_park, calle, 
         colonia, numero_ext, stock, dia_ini, dia_fin, hora_apertura, hora_cierre, 
-        descripcion, url_ubicacion, id_person} = req.body;
+        descripcion, id_person} = req.body;
 
-    const query = `Call registroParks(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);`;
+    const query = `Call registroParks(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);`;
 
     pool.query(query, [id, nombre, apellido, telefono, correo, password, rol, nombre_park, calle, 
         colonia, numero_ext, stock, dia_ini, dia_fin, hora_apertura, hora_cierre, 
-        descripcion, url_ubicacion, id_person], (err, rows, fields)=>{
+        descripcion, id_person], (err, rows, fields)=>{
         if (!err) {
             res.json({Status: 'Park Registrado'})
         } else {

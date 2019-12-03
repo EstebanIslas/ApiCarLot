@@ -18,7 +18,7 @@ router.post('/login/',(req, res)=>{
     const {correo, password} = req.body;
     //console.log(id);
 
-    pool.query('SELECT * FROM users WHERE correo = ? AND password = ?', [correo, password], (err, rows, fields)=>{
+    pool.query('SELECT * FROM users INNER JOIN persons WHERE users.id_person = persons.id AND users.correo = ? AND users.password = ?;', [correo, password], (err, rows, fields)=>{
         if (!err) {
             res.json(rows[0]);
         } else {

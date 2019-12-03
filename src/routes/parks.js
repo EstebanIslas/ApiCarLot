@@ -4,6 +4,10 @@ const router = express.Router(); //Define the routes
 const pool = require('../database'); //Establece la conexion
 
 router.get('/getParks', (req, res)=>{
+    /*/:nombre_park/:calle
+    const {nombre_park, calle} = req.params;
+    console.log(nombre_park, " " , calle);*/
+
     pool.query('SELECT * FROM parks', (err, rows, fields)=>{
         if(!err){
             res.json(rows);

@@ -16,16 +16,18 @@ app.use(require('./routes/parks'));
 
 /** CORS **/
 
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    next();
+app.use((req, res, next) =>{
+    res.header('Access-Control-Allow-Origin' , '*');
+    res.header('Access-Control-Allow-Headers', 
+    'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+    );
 
-    app.options('*', (req, res) => {
-        // allowed XHR methods  
-        res.header('Access-Control-Allow-Methods', 'GET, PATCH, PUT, POST, DELETE, OPTIONS');
-        res.send();
-    });
+    if (req.method === 'OPTIONS') {
+        res.header('Access-Control-Allows-Methods', 'PUT, POST, PATCH, DELETE, GET');
+        return res.status(200).json({});
+    }
+
+    next();
 });
 
 /** SERVER **/

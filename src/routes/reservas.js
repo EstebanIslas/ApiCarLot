@@ -27,11 +27,11 @@ router.post('/getUserReserva', (req, res)=>{
 });
 
 router.post('/registroReserva', (req, res)=>{
-    const { id, id_park, id_user } = req.body;
+    const { id, id_park, id_user , hra_arrivo} = req.body;
 
-    const query = `CALL registroReservas(?,?,?);`;
+    const query = `CALL registroReservas(?,?,?,?);`;
 
-    pool.query(query, [id, id_park, id_user], (err, rows, fields)=>{
+    pool.query(query, [id, id_park, id_user, hra_arrivo], (err, rows, fields)=>{
         if (!err) {
             res.json({Status: 'Reserva insertada'});            
         } else {

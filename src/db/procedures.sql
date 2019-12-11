@@ -60,3 +60,23 @@ BEGIN
    SELECT _id AS 'id';
 END
 
+/** Insertar una reserva **/
+
+DELIMITER $$
+CREATE PROCEDURE `registroReservas` (
+  IN _id INT,
+  IN _id_park INT,
+  IN _id_user INT
+)
+BEGIN 
+	IF _id = 0 THEN
+		INSERT INTO reservas (id, id_park, id_user)
+		VALUES (_id, _id_park, _id_user);
+
+   	SET _id = LAST_INSERT_ID();
+   
+   END IF;
+   
+   SELECT _id AS 'id';
+END
+

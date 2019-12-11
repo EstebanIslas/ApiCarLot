@@ -1,0 +1,23 @@
+// Reservaciones
+
+// Ruta:  '/getReservas' get all about the table 'Reservations'
+
+No se envia objeto Json
+
+//Ruta: '/getUserReserva' get all the 'reservations' of a user and parks information 
+
+Objeto que recibe
+
+{
+    "id_user": 5 //dato a insertar
+}
+
+//Ruta '/registroReserva' insert in the Db information of a reservation
+
+Objeto que recibe
+
+{
+	"id": 0, //se envia en 0
+	"id_park": 1, //datos a insertar
+	"id_user":6 //datos a insertar
+}

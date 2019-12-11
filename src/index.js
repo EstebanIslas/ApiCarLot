@@ -13,6 +13,7 @@ app.use(express.json()); //Objetos Json
 app.use(require('./routes/users')); //importa rutas
 app.use(require('./routes/persons'));
 app.use(require('./routes/parks'));
+app.use(require('./routes/reservas'));
 
 /** CORS **/
 

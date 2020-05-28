@@ -3,7 +3,7 @@ const router = express.Router(); //Define the routes
 
 const pool = require('../database');
 
-router.get('/getAllPersons', (req, res)=>{
+router.get('/get_all_persons', (req, res)=>{
     pool.query('SELECT * FROM persons', (err, rows, fields)=>{
         if (!err) {
             res.json(rows);
@@ -13,7 +13,7 @@ router.get('/getAllPersons', (req, res)=>{
     });
 });
 
-router.get('/getPersonById/:id',(req, res)=>{
+router.get('/get_person_by_id/:id',(req, res)=>{
     const {id} = req.params; //Obtener del navegador
     console.log(id);
 
@@ -26,7 +26,7 @@ router.get('/getPersonById/:id',(req, res)=>{
     });
 });
 
-router.post('/addPerson',(req, res)=>{
+router.post('/create_person',(req, res)=>{
     const {id, nombre, apellido, telefono} = req.body; //Variable que recibe datos de la url
     const query = `Call personsAddorEdit(?,?,?,?);`; //Llama al procedure de Mysql
 
@@ -39,7 +39,7 @@ router.post('/addPerson',(req, res)=>{
     });
 });
 
-router.put('/updatePerson/:id', (req, res)=>{
+router.put('/update_person/:id', (req, res)=>{
     const {nombre, apellido, telefono} = req.body; //Variable que recibe datos de la url
     const { id } = req.params;
     const query = `Call personsAddorEdit(?,?,?,?);`;
@@ -53,7 +53,7 @@ router.put('/updatePerson/:id', (req, res)=>{
     });
 });
 
-router.delete('/deletePerson/:id', (req, res) =>{
+router.delete('/delete_person/:id', (req, res) =>{
     const {id} = req.params;
     pool.query('DELETE FROM persons WHERE id = ?', [id], (err, rows, fields)=>{
         if (!err) {

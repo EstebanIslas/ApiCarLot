@@ -3,7 +3,7 @@ const router = express.Router();
 
 const pool = require('../database');
 
-router.get('/getReservas', (req, res)=>{
+router.get('/get_reservas', (req, res)=>{
     pool.query('SELECT * FROM reservas', (err, rows, fields)=>{
         if (!err) {
             res.json(rows);
@@ -13,10 +13,11 @@ router.get('/getReservas', (req, res)=>{
     });
 });
 
-router.post('/getUserReserva', (req, res)=>{
+router.post('/get_user_reserva', (req, res)=>{
     const {id_user} = req.body;
 
-    pool.query('SELECT * FROM reservas INNER JOIN parks WHERE parks.id = reservas.id_park AND reservas.id_user = ?;', [id_user], (err, rows, fields)=>{
+    pool.query('SELECT * FROM reservas INNER JOIN parks WHERE parks.id = reservas.id_park AND reservas.id_user = ?;'
+    , [id_user], (err, rows, fields)=>{
         if (!err) {
             res.json(rows);            
         } else {
@@ -26,7 +27,7 @@ router.post('/getUserReserva', (req, res)=>{
     });
 });
 
-router.post('/registroReserva', (req, res)=>{
+router.post('/create_reserva', (req, res)=>{
     const { id, id_park, id_user , hra_arrivo} = req.body;
 
     const query = `CALL registroReservas(?,?,?,?);`;

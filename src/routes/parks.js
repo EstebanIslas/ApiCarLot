@@ -3,7 +3,7 @@ const router = express.Router(); //Define the routes
 
 const pool = require('../database'); //Establece la conexion
 
-router.get('/getAllParks', (req, res)=>{
+router.get('/get_all_parks', (req, res)=>{
     /*/:nombre_park/:calle
     const {nombre_park, calle} = req.params;
     console.log(nombre_park, " " , calle);*/
@@ -17,7 +17,7 @@ router.get('/getAllParks', (req, res)=>{
     });
 });
 
-router.post('/registroParks', (req, res)=>{
+router.post('/create_park', (req, res)=>{
     const{id, nombre, apellido, telefono, correo, password, rol, nombre_park, calle, 
         colonia, numero_ext, stock, dia_ini, dia_fin, hora_apertura, hora_cierre, 
         descripcion, tarifa, id_person} = req.body;
@@ -36,7 +36,7 @@ router.post('/registroParks', (req, res)=>{
     });
 });
 
-router.post('/getOnePark', (req, res)=>{
+router.post('/get_one_park', (req, res)=>{
     //:nombre_park/:calle
     const {id} = req.body;
     //console.log(nombre_park, " " , calle);*/

@@ -3,7 +3,7 @@ const router = express.Router(); //Define the routes
 
 const pool = require('../database');
 
-router.get('/getAllUsers', (req, res)=>{
+router.get('/get_all_users', (req, res)=>{
     pool.query('SELECT * FROM users', (err, rows, fields)=>{
         if (!err) {
             res.json(rows);
@@ -14,7 +14,7 @@ router.get('/getAllUsers', (req, res)=>{
 });
 
 //iniciar sesión por ambos roles de usuario
-router.post('/login/',(req, res)=>{
+router.post('/login',(req, res)=>{
     const {correo, password} = req.body;
     //console.log(id);
 
@@ -28,7 +28,7 @@ router.post('/login/',(req, res)=>{
     });
 });
 
-router.post('/registroUsuario', (req, res)=>{
+router.post('/create_user', (req, res)=>{
     const{id, nombre, apellido, telefono, correo, password, rol} = req.body;
     const query = `Call registroUsuarios(?,?,?,?,?,?,?);`;
 
@@ -42,7 +42,7 @@ router.post('/registroUsuario', (req, res)=>{
     });
 });
 
-router.post('/addUser',(req, res)=>{
+/*router.post('/addUser',(req, res)=>{
     const {id, correo, password, image, rol, id_person} = req.body; //Variable que recibe datos de la url
     const query = `Call usersAddorEdit(?,?,?,?,?,?);`; //Llama al procedure de Mysql
 
@@ -53,9 +53,9 @@ router.post('/addUser',(req, res)=>{
             console.log('Problems with the Server: ', err);
         }
     });
-});
+});*/
 
-router.put('/updateUser/:id', (req, res)=>{
+router.put('/update_user/:id', (req, res)=>{
     const {correo, password, image, rol, id_person} = req.body; //Variable que recibe datos de la url
     const { id } = req.params;
     const query = `Call usersAddorEdit(?,?,?,?,?,?);`;
@@ -69,7 +69,7 @@ router.put('/updateUser/:id', (req, res)=>{
     });
 });
 
-router.delete('/deleteUser/:id', (req, res) =>{
+router.delete('/delete_user/:id', (req, res) =>{
     const {id} = req.params;
     pool.query('DELETE FROM users WHERE id = ?', [id], (err, rows, fields)=>{
         if (!err) {

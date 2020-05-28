@@ -1,7 +1,6 @@
 {
-  "name": "ParkOneAPIS",
+  "name": "parkoneapis",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js",
@@ -16,5 +15,14 @@
   },
   "devDependencies": {
     "nodemon": "^1.19.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EstebanIslas/ApiCarLot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/EstebanIslas/ApiCarLot/issues"
+  },
+  "homepage": "https://github.com/EstebanIslas/ApiCarLot#readme",
+  "description": ""
 }

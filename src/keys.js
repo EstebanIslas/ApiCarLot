@@ -19,7 +19,7 @@ database:{
         host: 'localhost',
         user: 'root',
         password: '',
-        database: 'parkone'
+        database: 'carlot'
     }
 
 */
